@@ -21,7 +21,7 @@
         "intervention/image": "^3.6",
         "intervention/image-laravel": "^1.2",
         "itsgoingd/clockwork": "^5.2",
-        "laravel/breeze": "^2.0",
+        "laravel/breeze": "^2.1",
         "laravel/framework": "^11.0",
         "laravel/horizon": "^5.23",
         "laravel/octane": "^2.3",
