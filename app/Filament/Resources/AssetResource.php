@@ -29,8 +29,8 @@ class AssetResource extends Resource
                 Forms\Components\Select::make('asset_group_id')
                     ->relationship('assetGroup', 'name')
                     ->default(null),
-                Forms\Components\TextInput::make('asset_uri')
-                    ->maxLength(255)
+                Forms\Components\FileUpload::make('asset_uri')
+                    ->multiple()->disk('r2')->directory('assets')->visibility('public')
                     ->default(null),
                 Forms\Components\TextInput::make('asset_type')
                     ->maxLength(255)
