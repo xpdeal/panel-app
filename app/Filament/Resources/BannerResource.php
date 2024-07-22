@@ -19,6 +19,9 @@ class BannerResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    /**
+     * @throws \Exception
+     */
     public static function form(Form $form): Form
     {
         return $form
@@ -33,12 +36,24 @@ class BannerResource extends Resource
                     ->maxLength(255)
                     ->default(null),
                 Forms\Components\FileUpload::make('image')
-                    ->image(),
+                    ->image()->disk('r2')->directory('banners')->visibility('public')
+                    ->imageEditor()
+                    ->imageEditorMode(2)->imageEditorAspectRatios([
+                        '16:9',
+                        '4:3',
+                        '1:1',
+                    ]),
                 Forms\Components\TextInput::make('position')
                     ->maxLength(255)
                     ->default(null),
                 Forms\Components\FileUpload::make('mobile_image')
-                    ->image(),
+                    ->image()->directory('banners')->visibility('public')
+                    ->imageEditor()->imageResizeMode('imageResizeMode')
+                    ->imageEditorMode(2)->imageEditorAspectRatios([
+                        '16:9',
+                        '4:3',
+                        '1:1',
+                    ])->disk('r2'),
             ]);
     }
 
@@ -64,10 +79,10 @@ class BannerResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image')->disk('r2'),
                 Tables\Columns\TextColumn::make('position')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('mobile_image'),
+                Tables\Columns\ImageColumn::make('mobile_image')->disk('r2'),
             ])
             ->filters([
                 //

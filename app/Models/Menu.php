@@ -117,13 +117,10 @@ class Menu extends Model implements HasMedia
 
     public function route(): Attribute
     {
-        return Attribute::make(
-            get: function (mixed $value) {
-                if (! empty($this->category_id)) {
-                    return route('casino.category', $this->category->slug);
-                }
 
-                return route($value);
+      return Attribute::make(
+            get: function (mixed $value) {
+               return 'home';
             }
         );
     }

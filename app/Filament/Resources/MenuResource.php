@@ -28,9 +28,12 @@ class MenuResource extends Resource
                 Forms\Components\Select::make('menu_id')
                     ->relationship('menu', 'name')
                     ->default(null),
-                Forms\Components\TextInput::make('icon')
-                    ->maxLength(255)
-                    ->default(null),
+                Forms\Components\FileUpload::make('icon')
+                    ->image()->directory('promos')->visibility('public')
+                    ->imageEditor()->imageResizeMode('imageResizeMode')
+                    ->imageEditorMode(2)->imageEditorAspectRatios([
+                        '4:3'
+                    ])->disk('r2'),
                 Forms\Components\TextInput::make('route')
                     ->maxLength(255)
                     ->default(null),

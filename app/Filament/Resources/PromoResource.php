@@ -7,11 +7,13 @@ use App\Filament\Resources\PromoResource\RelationManagers;
 use App\Models\Promo;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class PromoResource extends Resource
 {
@@ -26,7 +28,9 @@ class PromoResource extends Resource
                 Forms\Components\Toggle::make('active')
                     ->required(),
                 Forms\Components\TextInput::make('name')
-                    ->required()
+                    ->required()->live()
+                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
+                Forms\Components\TextInput::make('slug')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('slug')
                     ->required()
@@ -34,9 +38,12 @@ class PromoResource extends Resource
                 Forms\Components\TextInput::make('description')
                     ->maxLength(255)
                     ->default(null),
-                Forms\Components\TextInput::make('cover')
-                    ->maxLength(255)
-                    ->default(null),
+                Forms\Components\FileUpload::make('cover')
+                    ->image()->directory('promos')->visibility('public')
+                    ->imageEditor()->imageResizeMode('imageResizeMode')
+                    ->imageEditorMode(2)->imageEditorAspectRatios([
+                        '4:3'
+                    ])->disk('r2'),
                 Forms\Components\TextInput::make('voucher')
                     ->maxLength(32)
                     ->default(null),
