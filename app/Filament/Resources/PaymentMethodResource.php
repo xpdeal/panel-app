@@ -31,7 +31,7 @@ class PaymentMethodResource extends Resource
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('icon')
+                Forms\Components\FileUpload::make('icon')
                     ->image()->directory('icons')->visibility('public')
                     ->imageEditor()->imageResizeMode('imageResizeMode')
                     ->imageEditorMode(2)->imageEditorAspectRatios([
