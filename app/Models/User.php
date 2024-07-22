@@ -13,6 +13,7 @@ use Bavix\Wallet\Traits\CanConfirm;
 use Bavix\Wallet\Traits\CanPay;
 use Bavix\Wallet\Traits\HasWalletFloat;
 use Bavix\Wallet\Traits\HasWallets;
+use Filament\Panel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -143,6 +144,11 @@ class User extends Authenticatable implements Auditable, Confirmable, Customer, 
     use Notifiable;
     use \OwenIt\Auditing\Auditable;
     use Searchable;
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return str_ends_with($this->email, '@admin.com');
+    }
 
     /**
      * The attributes that are mass assignable.
