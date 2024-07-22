@@ -34,10 +34,16 @@ class ContentBlockResource extends Resource
                 Forms\Components\TextInput::make('subtitle')
                     ->maxLength(255)
                     ->default(null),
-                Forms\Components\Textarea::make('block')
+                Forms\Components\RichEditor::make('block')
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image')
-                    ->image(),
+                    ->image()->directory('content')->visibility('public')
+                    ->imageEditor()->imageResizeMode('imageResizeMode')
+                    ->imageEditorMode(2)->imageEditorAspectRatios([
+                        '16:9',
+                        '4:3',
+                        '1:1',
+                    ])->disk('r2'),
                 Forms\Components\Textarea::make('meta')
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('action')

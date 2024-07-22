@@ -32,8 +32,11 @@ class PaymentMethodResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('icon')
-                    ->maxLength(255)
-                    ->default(null),
+                    ->image()->directory('icons')->visibility('public')
+                    ->imageEditor()->imageResizeMode('imageResizeMode')
+                    ->imageEditorMode(2)->imageEditorAspectRatios([
+                        '1:1',
+                    ])->disk('r2'),
                 Forms\Components\Textarea::make('countries')
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('amount_min')

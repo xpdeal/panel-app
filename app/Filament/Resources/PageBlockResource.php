@@ -33,7 +33,7 @@ class PageBlockResource extends Resource
                 Forms\Components\TextInput::make('identifier')
                     ->maxLength(26)
                     ->default(null),
-                Forms\Components\Textarea::make('page_block')
+                Forms\Components\RichEditor::make('page_block')
                     ->columnSpanFull(),
             ]);
     }
