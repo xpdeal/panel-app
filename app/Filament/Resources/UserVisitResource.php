@@ -29,7 +29,7 @@ class UserVisitResource extends Resource
                 Forms\Components\TextInput::make('ip_address')
                     ->maxLength(45)
                     ->default(null),
-                Forms\Components\Textarea::make('payload')
+                Forms\Components\KeyValue::make('payload')
                     ->columnSpanFull(),
             ]);
     }
