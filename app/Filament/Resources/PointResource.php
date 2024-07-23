@@ -23,7 +23,20 @@ class PointResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('up_to')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\KeyValue::make('point_rules')
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('title')
+                    ->maxLength(255)
+                    ->default(null),
+                Forms\Components\TextInput::make('icon')
+                    ->maxLength(255)
+                    ->default(null),
+                Forms\Components\TextInput::make('description')
+                    ->maxLength(255)
+                    ->default(null),
             ]);
     }
 
@@ -31,7 +44,23 @@ class PointResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('up_to')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('title')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('icon')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('description')
+                    ->searchable(),
             ])
             ->filters([
                 //
