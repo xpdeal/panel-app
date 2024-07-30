@@ -61,6 +61,7 @@
         "symfony/http-client": "^7.0",
         "symfony/process": "^7.0",
         "tightenco/ziggy": "^2.0",
+        "tomatophp/filament-plugins": "^1.0",
         "tzsk/otp": "^8.0"
     },
     "require-dev": {
@@ -116,7 +117,11 @@
                 "barryvdh/laravel-ide-helper"
             ]
         },
-        "merge-plugin": []
+        "merge-plugin": {
+            "include": [
+                "Modules/*/composer.json"
+            ]
+        }
     },
     "config": {
         "optimize-autoloader": true,
