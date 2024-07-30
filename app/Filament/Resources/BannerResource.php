@@ -43,8 +43,16 @@ class BannerResource extends Resource
                         '4:3',
                         '1:1',
                     ]),
-                Forms\Components\TextInput::make('position')
-                    ->maxLength(255)
+                Forms\Components\Select::make('position')
+                    ->options([
+                        'top' => 'top',
+                        'hero' => 'Home page hero',
+                        'sidebar' => 'sidebar',
+                        'login' => 'login',
+                        'register' => 'register',
+                        'deposit' => 'deposit',
+                        'referral' => 'referral',
+                    ])
                     ->default(null),
                 Forms\Components\FileUpload::make('mobile_image')
                     ->image()->directory('banners')->visibility('public')
