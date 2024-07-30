@@ -33,7 +33,6 @@ class PromoResource extends Resource
                 Forms\Components\TextInput::make('slug')
                     ->maxLength(255),
                 Forms\Components\RichEditor::make('description')
-                    ->maxLength(255)
                     ->default(null),
                 Forms\Components\FileUpload::make('cover')
                     ->image()->directory('promos')->visibility('public')
