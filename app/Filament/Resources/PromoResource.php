@@ -32,7 +32,9 @@ class PromoResource extends Resource
                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
                 Forms\Components\TextInput::make('slug')
                     ->maxLength(255),
-                Forms\Components\RichEditor::make('description')
+                Forms\Components\TextInput::make('description')
+                    ->default(null),
+                Forms\Components\RichEditor::make('content')
                     ->default(null),
                 Forms\Components\FileUpload::make('cover')
                     ->image()->directory('promos')->visibility('public')

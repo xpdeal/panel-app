@@ -46,6 +46,7 @@ class Promo extends Model
         'active',
         'name',
         'description',
+        'content',
         'slug',
         'cover',
         'voucher',
