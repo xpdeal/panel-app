@@ -23,6 +23,8 @@ class TaskResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Toggle::make('completed')
+                    ->required(),
                 Forms\Components\TextInput::make('task')
                     ->required()
                     ->maxLength(255),
