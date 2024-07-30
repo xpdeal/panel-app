@@ -37,6 +37,15 @@ class TaskResource extends Resource
                        'in_progress' => 'in_progress',
                    ])
                     ->default('waiting'),
+                Forms\Components\Select::make('side')
+                    ->required()
+                    ->options([
+                       'frontend' => 'frontend',
+                        'admin' => 'admin',
+                        'api' => 'api',
+                        'core' => 'core'
+                    ])
+                    ->default('waiting'),
                 Forms\Components\RichEditor::make('description')
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image')

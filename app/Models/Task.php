@@ -16,6 +16,7 @@ class Task extends Model
         'description',
         'stage',
         'image',
-        'url'
+        'url',
+        'side'
     ];
 }
