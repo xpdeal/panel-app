@@ -1,0 +1,33 @@
+{
+    "name": "Banners",
+    "alias": "banners",
+    "description": {
+        "ar": "Banners Manager",
+        "en": "Banners Manager",
+        "gr": "Banners Manager",
+        "de": "Banners Manager",
+        "nl": "Banners Manager",
+        "fr": "Banners Manager",
+        "sp": "Banners Manager"
+    },
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Banners\\Providers\\BannersServiceProvider"
+    ],
+    "files": [],
+    "title": {
+        "ar": "banners",
+        "en": "banners",
+        "gr": "banners",
+        "de": "banners",
+        "nl": "banners",
+        "fr": "banners",
+        "sp": "banners"
+    },
+    "color": "#cccccc",
+    "icon": "heroicon-o-cog",
+    "placeholder": "placeholder.webp",
+    "type": "plugin",
+    "version": "v1.0"
+}
