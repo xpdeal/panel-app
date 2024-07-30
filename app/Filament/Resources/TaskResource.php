@@ -64,13 +64,18 @@ class TaskResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('task')
+                Tables\Columns\TextInputColumn::make('task')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('url')
+                Tables\Columns\TextInputColumn::make('url')
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('image')
                     ,
-                Tables\Columns\TextColumn::make('stage')
+                Tables\Columns\SelectColumn::make('stage')->options([
+                    'frontend' => 'frontend',
+                    'admin' => 'admin',
+                    'api' => 'api',
+                    'core' => 'core'
+                ])
                     ->searchable(),
                 Tables\Columns\TextInputColumn::make('priority')
                     ->sortable(),
