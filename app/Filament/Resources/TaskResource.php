@@ -72,8 +72,7 @@ class TaskResource extends Resource
                     ,
                 Tables\Columns\TextColumn::make('stage')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('priority')
-                    ->numeric()
+                Tables\Columns\TextInputColumn::make('priority')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
