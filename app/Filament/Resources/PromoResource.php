@@ -32,18 +32,13 @@ class PromoResource extends Resource
                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
                 Forms\Components\TextInput::make('slug')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('description')
+                Forms\Components\RichEditor::make('description')
                     ->maxLength(255)
                     ->default(null),
                 Forms\Components\FileUpload::make('cover')
                     ->image()->directory('promos')->visibility('public')
-                    ->imageEditor()->imageResizeMode('imageResizeMode')
-                    ->imageEditorMode(2)->imageEditorAspectRatios([
-                        '4:3'
-                    ])->disk('r2'),
+                    ->imageEditor()
+                    ->imageEditorMode(2)->disk('r2'),
                 Forms\Components\TextInput::make('voucher')
                     ->maxLength(32)
                     ->default(null),
