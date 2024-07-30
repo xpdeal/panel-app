@@ -26,6 +26,8 @@ class TaskResource extends Resource
                 Forms\Components\TextInput::make('task')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('url')
+                    ->maxLength(255),
                 Forms\Components\Select::make('stage')
                     ->required()
                    ->options([
@@ -37,6 +39,9 @@ class TaskResource extends Resource
                     ->default('waiting'),
                 Forms\Components\RichEditor::make('description')
                     ->columnSpanFull(),
+                Forms\Components\FileUpload::make('image')
+                    ->disk('r2')->directory('assets')->visibility('public'),
+
                 Forms\Components\TextInput::make('priority')
                     ->required()
                     ->numeric()
@@ -50,6 +55,10 @@ class TaskResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('task')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('url')
+                    ->searchable(),
+                Tables\Columns\ImageColumn::make('image')
+                    ,
                 Tables\Columns\TextColumn::make('stage')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('priority')
